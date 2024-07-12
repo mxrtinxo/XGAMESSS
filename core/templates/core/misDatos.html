@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<form id="form" method="POST" enctype="multipart/form-data" class="row">
+  {% csrf_token %}
+        <main role="main">
+            <div class="container">
+                <section class="text-center">
+                    <br>
+                    <br>
+                    <h1>Mis datos</h1>
+                    <p class="lead">Llena tus datos para actualizarlos.</p>
+                    <br>
+                    <br>
+                            <div class="row">
+                                <!-- Campos del registro de usuario -->
+                                <form id="form" method="POST" enctype="multipart/form-data" class="row">
+                                    {% csrf_token %}
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="col-sm-8">
+                                            <div class="col-sm-12">
+                                              {{form_usuario|as_bootstrap_form:'help_text_visible=False' }}
+                                            </div>
+                                            <div class="col-sm-12">
+                                              {{ form_perfil|as_bootstrap_form }}
+                                            </div>
+                                        
+                                            <!-- AREA DE BOTONES -->
+                                            <div class="col-sm-12 mt-3">
+                                              <button type="submit" class="btn btn-outline-success">Actualizar mis datos</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!-- Foto de perfil -->
+                                        <div class="col">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img src="{% static 'core/img/Profile-PNG-Free-Image.png' %}" class="d-block" alt="..." style="width: 150px; height: auto;">
+
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <br>
+                                                        <input type="file" class="btn btn-primary">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+        </main>
+        {% endblock content %}
+
+        {% block script %}
+          <script src="{% static 'core/js/validador_misDatos.js' %}"></script>
+          <script src="{% static 'core/js/imagen.js' %}"></script>
+        {% endblock script %}
